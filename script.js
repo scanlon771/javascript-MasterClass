@@ -735,11 +735,30 @@ for (i = john.length; i >= 0; i--){
  GOOD LUCK
  */
 
- var johnTipCalculator = {
+  var johnTipCalculator = {
      bill: [124, 48, 268, 180, 42],
      tip:[],
      total: [],
-     clacTip: function() {
+     calcTip: function () {
+         var j = 0;
+         for (i = 0; i < this.bill.length; i++) {
+            if (this.bill[i] < 50) {
+                this.tip[j] = this.bill[i] * .2;
+                j++
+            }
+            else if (this.bill[i] >= 50 && this.bill[i] <= 200) {
+                this.tip[j] = this.bill[i] * .15;
+                j++;
+            }
+            else {
+                this.tip[j] = this.bill[i] * .1;
+                j++;
+            }
+         }
+         return this.tip;
+        },
+
+     calcTotal: function() {
          var j, k = 0;
          for (i = 0; i < this.bill.length; i++) {
              if (this.bill[i] < 50) {
@@ -760,10 +779,82 @@ for (i = john.length; i >= 0; i--){
                  j++;
                  k++;
              }
-         }
+            }
          return this.total;
-     }
+        }
+     
     }
 
-console.log(johnTipCalculator.clacTip());
+console.log(johnTipCalculator.calcTip());
+console.log(johnTipCalculator.calcTotal());
+
+
+var markTipCalculator = {
+    bill: [77, 375, 110, 45],
+    tip:[],
+    total: [],
+    calcTip: function () {
+        var j = 0;
+        for (i = 0; i < this.bill.length; i++) {
+           if (this.bill[i] < 100) {
+               this.tip[j] = this.bill[i] * .2;
+               j++
+           }
+           else if (this.bill[i] >= 100 && this.bill[i] <= 300) {
+               this.tip[j] = this.bill[i] * .1;
+               j++;
+           }
+           else {
+               this.tip[j] = this.bill[i] * .25;
+               j++;
+           }
+        }
+        return this.tip;
+       },
+
+    calcTotal: function() {
+        var j, k = 0;
+        for (i = 0; i < this.bill.length; i++) {
+            if (this.bill[i] < 100) {
+                this.tip[j] = this.bill[i] * .2;
+                this.total[k] = this.bill[i] + this.tip[j];
+                j++;
+                k++;
+            }
+            else if (this.bill[i] >= 100 && this.bill[i] <= 300) {
+                this.tip[j] = this.bill[i] * .1;
+                this.total[k] = this.bill[i] + this.tip[j];
+                j++;
+                k++;
+            }
+            else {
+                this.tip[j] = this.bill[i] * .25;
+                this.total[k] = this.bill[i] + this.tip[j];
+                j++;
+                k++;
+            }
+           }
+        return this.total;
+       }
+    
+   }
+
+   console.log(markTipCalculator.calcTip());
+   console.log(markTipCalculator.calcTotal());
+
+function averageTip(tip) {
+    this.tip = tip;
+    var tipTotal = 0;
+    for (i = 0; i < tip.length; i++) {
+        tipTotal += tip[i];
+    }
+    return tipTotal / tip.length;
+}
+
+console.log('The average tip John\'s family paid was $' + averageTip(johnTipCalculator.calcTip()));
+console.log('The average tip Mark\'s family paid was $' + averageTip(markTipCalculator.calcTip()));
+
+averageTip(johnTipCalculator.calcTip()) > averageTip(markTipCalculator.calcTip()) ?
+console.log('John\'s family paid the largest tips on average') : 
+console.log('Mark\'s family paid the largest tips on aveage');
 
