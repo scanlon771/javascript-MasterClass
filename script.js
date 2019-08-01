@@ -436,7 +436,7 @@ console.log(whatDoYouDo('retired', 'Mark'))
 /*****************************************************************
  *  Arrays
  */
-*/
+/*
  // Initialize new array
 var names = ['John', 'Mark', 'Jane'];
 var years = new Array(1990, 1969, 1948);
@@ -735,7 +735,7 @@ for (i = john.length; i >= 0; i--){
  GOOD LUCK
  */
 
-  var johnTipCalculator = {
+ var johnTipCalculator = {
      bill: [124, 48, 268, 180, 42],
      tip:[],
      total: [],
@@ -857,4 +857,30 @@ console.log('The average tip Mark\'s family paid was $' + averageTip(markTipCalc
 averageTip(johnTipCalculator.calcTip()) > averageTip(markTipCalculator.calcTip()) ?
 console.log('John\'s family paid the largest tips on average') : 
 console.log('Mark\'s family paid the largest tips on aveage');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
